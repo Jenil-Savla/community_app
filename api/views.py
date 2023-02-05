@@ -1,0 +1,72 @@
+from rest_framework.generics import GenericAPIView
+from rest_framework import status,permissions
+from django.contrib.auth import authenticate,login
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+import random
+
+from .models import User
+from .serializers import RegisterSerializer,LoginSerializer
+from . import util
+
+# Create your views here.
+class RegisterAPI(GenericAPIView):
+	
+	serializer_class = RegisterSerializer
+	
+	def post(self,request,*args,**kwargs):
+		data = request.data
+		#data['password'] = data['email'][:4]+str(random.randint(1000,9999))
+		data['password'] = '12345678'
+		serializer = self.serializer_class(data=data)
+		serializer.is_valid(raise_exception = True)
+		user = serializer.save()
+		token = Token.objects.create(user=user)
+		#current_site = get_current_site(request).domain
+		#relative_link = reverse('email-verify')
+		#link = 'http://'+current_site+relative_link+'?token='+ token.key
+		#data = {'email_body': f'Use this link to get verified {link}.\nUsername: {data['email']}\nPassword: {password}', 'subject':'Email Verification', 'to' : user.email}
+		#Util.send_email(data)
+		#return Response({'success':'success'},status=status.HTTP_201_CREATED)
+		return Response(serializer.data,status=status.HTTP_201_CREATED)
+
+class LoginAPI(GenericAPIView):
+	
+	serializer_class = LoginSerializer
+	
+	def post(self,request,*args,**kwargs ):
+		email = request.data.get('email',None)
+		password = request.data.get('password',None)
+		user = authenticate(email = email, password = password)
+		if user :
+			#login(request,user)
+			serializer = self.serializer_class(user)
+			token = Token.objects.get(user=user)
+			return Response({'token' : token.key,'email' : user.email},status = status.HTTP_200_OK)
+		return Response('Invalid Credentials',status = status.HTTP_404_NOT_FOUND)
+	
+class UserRequest(GenericAPIView):
+	
+	serializer_class = RegisterSerializer
+	queryset = User.objects.filter(is_active = False)
+	permission_classes = [permissions.IsAdminUser,]
+
+	def get(self,request):
+		users = self.get_queryset()
+		serializer = self.serializer_class(users, many=True)
+		return Response(serializer.data, status=status.HTTP_200_OK)
+	
+	def post(self,request):
+		email = request.data['email']
+		user = User.objects.get(email=email)
+		user_data = self.serializer_class(user).data
+		password = email[:4]+str(random.randint(1000,9999))
+		data ={'email_body': f"Congratulations! your account is activated.\nUsername: {user_data['email']}\nPassword: {password}", 'email_subject': "Account activated!",'to_email':user_data['email']}
+		util.send_email(data)
+		user.set_password(password)
+		user.is_active = True
+		user.save()
+		return Response({'success':'activated'}, status=status.HTTP_200_OK)
