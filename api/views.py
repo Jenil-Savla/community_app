@@ -20,7 +20,10 @@ class RegisterAPI(GenericAPIView):
 	def post(self,request,*args,**kwargs):
 		data = request.data
 		#data['password'] = data['email'][:4]+str(random.randint(1000,9999))
+		_mutable = data._mutable
+		data._mutable = True
 		data['password'] = '12345678'
+		data._mutable = _mutable
 		serializer = self.serializer_class(data=data)
 		if serializer.is_valid(raise_exception = True):
 			user = serializer.save()
