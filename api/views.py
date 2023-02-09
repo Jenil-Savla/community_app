@@ -1,9 +1,9 @@
 from rest_framework.generics import GenericAPIView
 from rest_framework import status,permissions
-from django.contrib.auth import authenticate,login
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
+from django.contrib.auth import authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 import random
@@ -18,24 +18,23 @@ class RegisterAPI(GenericAPIView):
 	serializer_class = RegisterSerializer
 	
 	def post(self,request,*args,**kwargs):
-		data = request.data
-		#data['password'] = data['email'][:4]+str(random.randint(1000,9999))
-		_mutable = data._mutable
-		data._mutable = True
-		data['password'] = '12345678'
-		data._mutable = _mutable
-		serializer = self.serializer_class(data=data)
-		if serializer.is_valid(raise_exception = True):
-			user = serializer.save()
-			token = Token.objects.create(user=user)
-			#current_site = get_current_site(request).domain
-			#relative_link = reverse('email-verify')
-			#link = 'http://'+current_site+relative_link+'?token='+ token.key
-			#data = {'email_body': f'Use this link to get verified {link}.\nUsername: {data['email']}\nPassword: {password}', 'subject':'Email Verification', 'to' : user.email}
-			#Util.send_email(data)
-			#return Response({'success':'success'},status=status.HTTP_201_CREATED)
-			return Response({"status" : True ,"data" : serializer.data, "message" : 'Request Sent'},status=status.HTTP_200_OK)
-		return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
+		try:
+			data = request.data
+			data = dict(data)
+			data['password'] = '12345678'
+			serializer = self.serializer_class(data=data)
+			if serializer.is_valid(raise_exception = True):
+				user = serializer.save()
+				token = Token.objects.create(user=user)
+				current_site = get_current_site(request).domain
+				relative_link = reverse('email-verify')
+				link = 'http://'+current_site+relative_link+'?token='+ token.key
+				data = {'email_body': f'Use this link to get verified {link}.', 'subject':'Email Verification', 'to' : user.email}
+				#util.send_email(data)
+				return Response({"status" : True ,"data" : serializer.data, "message" : 'Request Sent'},status=status.HTTP_200_OK)
+			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginAPI(GenericAPIView):
 	
@@ -46,7 +45,6 @@ class LoginAPI(GenericAPIView):
 		password = request.data.get('password',None)
 		user = authenticate(email = email, password = password)
 		if user :
-			#login(request,user)
 			serializer = self.serializer_class(user)
 			token = Token.objects.get(user=user)
 			return Response({"status" : True ,"data" : {'token' : token.key,'email' : user.email}, "message" : 'Login Success'},status = status.HTTP_200_OK)
