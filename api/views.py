@@ -26,10 +26,10 @@ class RegisterAPI(GenericAPIView):
 			if serializer.is_valid(raise_exception = True):
 				user = serializer.save()
 				token = Token.objects.create(user=user)
-				current_site = get_current_site(request).domain
+				'''current_site = get_current_site(request).domain
 				relative_link = reverse('email-verify')
 				link = 'http://'+current_site+relative_link+'?token='+ token.key
-				data = {'email_body': f'Use this link to get verified {link}.', 'subject':'Email Verification', 'to' : user.email}
+				data = {'email_body': f'Use this link to get verified {link}.', 'subject':'Email Verification', 'to' : user.email}'''
 				#util.send_email(data)
 				return Response({"status" : True ,"data" : serializer.data, "message" : 'Request Sent'},status=status.HTTP_200_OK)
 			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
