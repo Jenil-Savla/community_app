@@ -56,9 +56,9 @@ class User(AbstractUser):
     education = models.CharField(max_length=50)
     occupation = models.CharField(max_length=50)
     village = models.CharField(max_length=50)
-    gender = models.CharField(default = 'M',max_length = 8,choices = GENDERS)
+    gender = models.CharField(default = 'Male',max_length = 10)
     blood_group=models.CharField(max_length=50)
-    maritial_status = models.CharField(default = 'Single',max_length = 8,choices = MARITIAL)
+    maritial_status = models.CharField(default = 'Single',max_length = 10)
     in_laws_village = models.CharField(max_length=50)
     profile_pic = models.ImageField(upload_to = 'users/',blank = True)
 

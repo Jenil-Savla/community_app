@@ -6,10 +6,11 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
+from django.db.models import Q
 import random
 
 from .models import User
-from .serializers import RegisterSerializer,LoginSerializer
+from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer
 from . import util
 
 # Create your views here.
@@ -78,3 +79,82 @@ class UserRequest(GenericAPIView):
 			return Response({"status" : True ,"data" : {}, "message" : "User Activated"}, status=status.HTTP_200_OK)
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class MemberListAPI(GenericAPIView):
+	
+	serializer_class = MemberSerializer
+	queryset = User.objects.all()
+	permission_classes = [permissions.IsAuthenticated,]
+
+	def get(self,request):
+		try:
+			users = self.get_queryset()
+			serializer = self.serializer_class(users, many=True)
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def post(self,request):
+		try:
+			filter_data = request.data
+			if filter_data['name'] == 'all':
+				if filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
+					users = User.objects.filter(city__icontains = filter_data['city'], village__in = filter_data['village'], gender__in =  filter_data['gender'])
+				elif filter_data['city'] == 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
+					users = User.objects.filter(village__in = filter_data['village'], gender__in =  filter_data['gender'])
+				elif filter_data['city'] != 'all' and filter_data['village'] == 'all' and filter_data['gender'] != 'all':
+					users = User.objects.filter(city__icontains = filter_data['city'], gender__in =  filter_data['gender'])
+				elif filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] == 'all':
+					users = User.objects.filter(city__icontains = filter_data['city'], village__in = filter_data['village'])
+				elif filter_data['city'] == 'all' and filter_data['village'] == 'all' and filter_data['gender'] != 'all':
+					users = User.objects.filter(gender__in =  filter_data['gender'])
+				elif filter_data['city'] == 'all' and filter_data['village'] != 'all' and filter_data['gender'] == 'all':
+					users = User.objects.filter(village__in = filter_data['village'])
+				elif filter_data['city'] != 'all' and filter_data['village'] == 'all' and filter_data['gender'] == 'all':
+					users = User.objects.filter(city__icontains = filter_data['city'])
+				else:
+					users = self.get_queryset()
+			else:
+				name = filter_data['name'].split(" ")
+				fname = name[0]
+				lname = name[len(name)-1]
+				if len(name) == 1:
+					if filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), city__icontains = filter_data['city'], village__icontains = filter_data['village'], gender =  filter_data['gender'])
+					elif filter_data['city'] == 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), village__icontains = filter_data['village'], gender =  filter_data['gender'])
+					elif filter_data['city'] != 'all' and filter_data['village'] == 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), city__icontains = filter_data['city'], gender =  filter_data['gender'])
+					elif filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] == 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), city__icontains = filter_data['city'], village__icontains = filter_data['village'])
+					elif filter_data['city'] == 'all' and filter_data['village'] == 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), gender =  filter_data['gender'])
+					elif filter_data['city'] == 'all' and filter_data['village'] != 'all' and filter_data['gender'] == 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), village__icontains = filter_data['village'])
+					elif filter_data['city'] != 'all' and filter_data['village'] == 'all' and filter_data['gender'] == 'all':
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname), city__icontains = filter_data['city'])
+					else:
+						users = User.objects.filter(Q(first_name__icontains = fname) | Q(last_name__icontains = fname))
+				else:
+					if filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, city__icontains = filter_data['city'], village__icontains = filter_data['village'], gender =  filter_data['gender']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, city__icontains = filter_data['city'], village__icontains = filter_data['village'], gender =  filter_data['gender'])
+					elif filter_data['city'] == 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, village__icontains = filter_data['village'], gender =  filter_data['gender']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, village__icontains = filter_data['village'], gender =  filter_data['gender'])
+					elif filter_data['city'] != 'all' and filter_data['village'] == 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, city__icontains = filter_data['city'], gender =  filter_data['gender']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, city__icontains = filter_data['city'], gender =  filter_data['gender'])
+					elif filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] == 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, city__icontains = filter_data['city'], village__icontains = filter_data['village']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, city__icontains = filter_data['city'], village__icontains = filter_data['village'])
+					elif filter_data['city'] == 'all' and filter_data['village'] == 'all' and filter_data['gender'] != 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, gender =  filter_data['gender']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, gender =  filter_data['gender'])
+					elif filter_data['city'] == 'all' and filter_data['village'] != 'all' and filter_data['gender'] == 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, village__icontains = filter_data['village']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, village__icontains = filter_data['village'])
+					elif filter_data['city'] != 'all' and filter_data['village'] == 'all' and filter_data['gender'] == 'all':
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, city__icontains = filter_data['city']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, city__icontains = filter_data['city'])
+					else:
+						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname)
+				
+			serializer = self.serializer_class(users, many=True)
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Invalid filter"}, status=status.HTTP_400_BAD_REQUEST)
