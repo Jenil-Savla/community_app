@@ -4,6 +4,31 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from rest_framework.authtoken.models import Token
 
+class Village(models.Model):
+    name = models.CharField(max_length=40)
+    talak = models.CharField(max_length=40)
+    district = models.CharField(max_length=40)
+    pincode = models.PositiveIntegerField(default=000000)
+
+    def __str__(self):
+        return self.name
+
+class Family(models.Model):
+    head = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    village = models.ForeignKey(Village, on_delete=models.CASCADE)
+    home_address = models.CharField(max_length=1000, default="None")
+    village_address = models.CharField(max_length=1000, default="None")
+
+    def __str__(self):
+        return f"{self.head.first_name} - {self.head.email}"
+
+class OccupationAddress(models.Model):
+    family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    occupation_address = models.CharField(max_length=1000, default="None")
+
+    def __str__(self):
+        return self.family.head.email
+
 # Create your models here.
 class UserManager(BaseUserManager):
     """
@@ -61,6 +86,7 @@ class User(AbstractUser):
     maritial_status = models.CharField(default = 'Single',max_length = 10)
     in_laws_village = models.CharField(max_length=50)
     profile_pic = models.ImageField(upload_to = 'users/',blank = True)
+    related_family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS=[]

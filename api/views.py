@@ -9,8 +9,8 @@ from django.urls import reverse
 from django.db.models import Q
 import random
 
-from .models import User
-from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer
+from .models import User, Village, Family, OccupationAddress
+from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer
 from . import util
 
 # Create your views here.
@@ -32,6 +32,10 @@ class RegisterAPI(GenericAPIView):
 				link = 'http://'+current_site+relative_link+'?token='+ token.key
 				data = {'email_body': f'Use this link to get verified {link}.', 'subject':'Email Verification', 'to' : user.email}'''
 				#util.send_email(data)
+				village = Village.objects.get(name__icontains = data['village'])
+				family = Family.objects.create(head = user, village = village)
+				occupation = OccupationAddress.objects.create(family=family)
+				user = serializer.save(related_family = family)
 				return Response({"status" : True ,"data" : serializer.data, "message" : 'Request Sent'},status=status.HTTP_200_OK)
 			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
 		except Exception as e:
@@ -158,3 +162,72 @@ class MemberListAPI(GenericAPIView):
 
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Invalid filter"}, status=status.HTTP_400_BAD_REQUEST)
+		
+class VillageAPI(GenericAPIView):
+	serializer_class = VillageSerializer
+	queryset = Village.objects.all()
+
+	def get(self,request):
+		try:
+			villages = self.get_queryset()
+			serializer = self.serializer_class(villages, many=True)
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class FamilyAPI(GenericAPIView):
+	serializer_class = FamilySerializer
+	queryset = Family.objects.all()
+	permission_classes = [permissions.IsAuthenticated,]
+
+	def get(self,request,pk):
+		try:
+			family = Family.objects.get(id = pk)
+			family_serializer = self.serializer_class(family)
+			data = dict(family_serializer.data)
+			if request.user == family.head:
+				data['can_edit'] = True
+			else:
+				data['can_edit'] = False
+			occupation_address = OccupationAddress.objects.filter(family = family)
+			occupation_address_serializer = OccupationAddressSerializer(occupation_address, many =True)
+			data['occupations'] = list(occupation_address_serializer.data)
+			members = User.objects.filter(related_family = family)
+			user_serializer = MemberSerializer(members, many = True)
+			data['members'] = list(user_serializer.data)
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+	def post(self,request,pk):
+		try:
+			data = dict(request.data)
+			family = Family.objects.get(id = pk)
+			if request.user != family.head:
+				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can edit this data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+			data['family'] = family.id
+			serializer = OccupationAddressSerializer(data=data)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_400_BAD_REQUEST)
+
+	def put(self,request,pk):
+		try:
+			data = request.data
+			family = Family.objects.get(id = pk)
+			if request.user != family.head:
+				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can edit this data"}, status=status.HTTP_400_BAD_REQUEST)
+			occupation = data.pop('occupations')
+			for occ in occupation:
+				occupation = OccupationAddress.objects.get(id = occ['id'])
+				occupation_serializer = OccupationAddressSerializer(instance = occupation, data = occ, partial = True)
+				if occupation_serializer.is_valid(raise_exception=True):
+					occupation_serializer.save()
+			family_serializer = self.serializer_class(instance = family, data = data, partial = True)
+			if family_serializer.is_valid(raise_exception=True):
+				family_serializer.save()
+			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

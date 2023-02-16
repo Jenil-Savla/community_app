@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Village, Family, OccupationAddress
 
 import re
 email_pattern = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
@@ -33,4 +33,20 @@ class LoginSerializer(serializers.ModelSerializer):
 class MemberSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
+		fields = '__all__'
+
+class VillageSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Village
+		fields = '__all__'
+
+class FamilySerializer(serializers.ModelSerializer):
+	village = VillageSerializer()
+	class Meta:
+		model = Family
+		fields = '__all__'
+
+class OccupationAddressSerializer(serializers.ModelSerializer):
+	class Meta:
+		model =  OccupationAddress
 		fields = '__all__'

@@ -7,4 +7,6 @@ urlpatterns = [
     path('requests/', views.UserRequest.as_view(), name="Requests"),
 
     path('members/', views.MemberListAPI.as_view(), name="Members"),
+    path('village-list/', views.VillageAPI.as_view(), name="Villages"),
+    path('family/<str:pk>', views.FamilyAPI.as_view(), name="Family"),
 ]
