@@ -2,6 +2,7 @@ from rest_framework.generics import GenericAPIView
 from rest_framework import status,permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 from django.contrib.auth import authenticate
 from django.contrib.sites.shortcuts import get_current_site
@@ -13,7 +14,29 @@ from .models import User, Village, Family, OccupationAddress
 from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer
 from . import util
 
+class IsAdminUserOrReadOnly(permissions.IsAdminUser):
+
+    def has_permission(self, request, view):
+        is_admin = super(IsAdminUserOrReadOnly, self).has_permission(request, view)
+        # Python3: is_admin = super().has_permission(request, view)
+        return request.method in permissions.SAFE_METHODS or is_admin
+
+
 # Create your views here.
+@api_view(['GET'])
+def homepage(request):
+	try:
+		data = dict()
+		counter = set()
+		for family in Family.objects.all():
+			counter.add(family.head.city.lower())
+		data['cities'] = len(counter)
+		data['families'] = Family.objects.count()
+		data['members'] = User.objects.count()
+		return Response({"status" : True ,"data" : data, "message" : 'Success'},status=status.HTTP_200_OK)
+	except:
+		return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_400_BAD_REQUEST)
+
 class RegisterAPI(GenericAPIView):
 	
 	serializer_class = RegisterSerializer
@@ -289,3 +312,6 @@ class MemberAPI(GenericAPIView):
 			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class EventAPI(GenericAPIView):
+	pass
