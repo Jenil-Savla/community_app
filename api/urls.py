@@ -9,6 +9,9 @@ urlpatterns = [
     path('members/', views.MemberListAPI.as_view(), name="Members"),
     path('village-list/', views.VillageAPI.as_view(), name="Villages"),
     path('family/<str:pk>', views.FamilyAPI.as_view(), name="Family"),
-    path('add-member/<str:pk>', views.MemberAPI.as_view(), name="Add Member"),
+    path('add-member/<str:pk>', views.MemberAPI.as_view(), name="Add-Member"),
+    path('event/<str:pk>', views.EventAPI.as_view(), name="Event"),
+    path('events/', views.EventListAPI.as_view(), name="Event-List"),
+    
     path('homepage', views.homepage, name="Homepage"),
 ]

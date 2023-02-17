@@ -9,6 +9,7 @@ class Village(models.Model):
     talak = models.CharField(max_length=40)
     district = models.CharField(max_length=40)
     pincode = models.PositiveIntegerField(default=000000)
+    shakha = models.CharField(max_length=50, default="None")
     no_of_families = models.PositiveIntegerField(default=0)
 
     def __str__(self):
@@ -101,3 +102,17 @@ class User(AbstractUser):
     def token(self):
         token = Token.objects.get(user=User.objects.get(self.id))
         return token
+    
+class Event(models.Model):
+    name = models.CharField(max_length=80)
+    about = models.TextField(max_length=255)
+    date = models.DateField()
+    venue = models.CharField(max_length=1000, default="N/A")
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    photos = models.URLField(blank = True, null=True)
+    pdf = models.URLField(blank = True, null=True)
+    picture = models.ImageField(upload_to = 'events/',blank = True, null=True)
+
+    def __str__(self):
+        return self.name

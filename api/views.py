@@ -10,8 +10,8 @@ from django.urls import reverse
 from django.db.models import Q
 import random
 
-from .models import User, Village, Family, OccupationAddress
-from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer
+from .models import User, Village, Family, OccupationAddress, Event
+from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer
 from . import util
 
 class IsAdminUserOrReadOnly(permissions.IsAdminUser):
@@ -20,7 +20,6 @@ class IsAdminUserOrReadOnly(permissions.IsAdminUser):
         is_admin = super(IsAdminUserOrReadOnly, self).has_permission(request, view)
         # Python3: is_admin = super().has_permission(request, view)
         return request.method in permissions.SAFE_METHODS or is_admin
-
 
 # Create your views here.
 @api_view(['GET'])
@@ -268,6 +267,14 @@ class MemberAPI(GenericAPIView):
 	queryset = User.objects.all()
 	permission_classes = [permissions.IsAuthenticated,]
 
+	def get(self,request,pk):
+		try:
+			member = User.objects.get(email = pk)
+			serializer = self.serializer_class(member)
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 	def post(self,request,pk):
 		try:
 			data = dict(request.data)
@@ -314,4 +321,67 @@ class MemberAPI(GenericAPIView):
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
 class EventAPI(GenericAPIView):
-	pass
+
+	serializer_class = EventSerializer
+	permission_classes = [permissions.IsAuthenticated,]
+
+	def get(self,request,pk):
+		try:
+			event = Event.objects.get(id = pk)
+			serializer = self.serializer_class(event)
+			data = dict(serializer.data)
+			if request.user.is_staff:
+				data['can_edit'] = True
+			else:
+				data['can_edit'] = False
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def put(self,request,pk):
+		try:
+			event = Event.objects.get(id = pk)
+			if request.user.is_staff == False:
+				return Response({"status" : False ,"data" : {}, "message" : "Sorry, only admin can edit this page"}, status=status.HTTP_200_OK)
+			serializer = self.serializer_class(instance = event, data = request.data, partial = True)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def delete(self,request,pk):
+		try:
+			event = Event.objects.get(id = pk)
+			if request.user.is_staff == False:
+				return Response({"status" : False ,"data" : {}, "message" : "Sorry, only admin can edit this page"}, status=status.HTTP_200_OK)
+			event.delete()
+			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class EventListAPI(GenericAPIView):
+	serializer_class = EventSerializer
+	permission_classes = [permissions.IsAuthenticated,]
+	queryset = Event.objects.all().order_by('-date')
+
+	def get(self,request):
+		try:
+			event = self.get_queryset()
+			serializer = self.serializer_class(event,many = True)
+			data = serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def post(self,request):
+		try:
+			if request.user.is_staff == False:
+				return Response({"status" : False ,"data" : {}, "message" : "Sorry, only admin can edit this page"}, status=status.HTTP_200_OK)
+			serializer = self.serializer_class(data = request.data)	
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+			data = serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
