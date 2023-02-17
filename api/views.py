@@ -231,3 +231,54 @@ class FamilyAPI(GenericAPIView):
 			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+	
+class MemberAPI(GenericAPIView):
+	
+	serializer_class = MemberSerializer
+	queryset = User.objects.all()
+	permission_classes = [permissions.IsAuthenticated,]
+
+	def post(self,request,pk):
+		try:
+			data = dict(request.data)
+			family = Family.objects.get(id = pk)
+			if request.user != family.head:
+				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can add member"}, status=status.HTTP_400_BAD_REQUEST)
+			data['password'] = data['email'][:4]+str(random.randint(1000,9999))
+			data['village'] = family.village.name
+			data['related_family'] = family.id
+			serializer = MemberSerializer(data=data)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+	
+	def put(self,request,pk):
+		try:
+			data = dict(request.data)
+			family = Family.objects.get(id = pk)
+			if request.user != family.head:
+				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can edit member"}, status=status.HTTP_400_BAD_REQUEST)
+			data['password'] = data['email'][:4]+str(random.randint(1000,9999))
+			data['village'] = family.village.name
+			data['related_family'] = family.id
+			user = User.objects.get(email = data['email'])
+			serializer = MemberSerializer(instance = user, data=data, partial = True)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def delete(self,request,pk):
+		try:
+			email = request.data['email']
+			family = Family.objects.get(id = pk)
+			if request.user != family.head:
+				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can delete member"}, status=status.HTTP_400_BAD_REQUEST)
+			user = User.objects.get(email = email)
+			user.delete()
+			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
