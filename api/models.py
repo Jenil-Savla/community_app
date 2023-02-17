@@ -9,6 +9,7 @@ class Village(models.Model):
     talak = models.CharField(max_length=40)
     district = models.CharField(max_length=40)
     pincode = models.PositiveIntegerField(default=000000)
+    no_of_families = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.name

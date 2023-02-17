@@ -170,6 +170,13 @@ class VillageAPI(GenericAPIView):
 	def get(self,request):
 		try:
 			villages = self.get_queryset()
+			villages.update(no_of_families = 0)
+			families = Family.objects.all().values('village')
+			for family in families:
+				village = Village.objects.get(id = family['village'])
+				village.no_of_families += 1
+				village.save()
+			villages = self.get_queryset()
 			serializer = self.serializer_class(villages, many=True)
 			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
