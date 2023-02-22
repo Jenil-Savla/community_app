@@ -74,7 +74,7 @@ class LoginAPI(GenericAPIView):
 		if user :
 			serializer = self.serializer_class(user)
 			token = Token.objects.get(user=user)
-			return Response({"status" : True ,"data" : {'token' : token.key,'email' : user.email}, "message" : 'Login Success'},status = status.HTTP_200_OK)
+			return Response({"status" : True ,"data" : {'token' : token.key,'email' : user.email, 'family':user.related_family.id}, "message" : 'Login Success'},status = status.HTTP_200_OK)
 		return Response({"status" : False ,"data" : {}, "message" : 'Invalid Credentials'},status = status.HTTP_401_UNAUTHORIZED)
 	
 class UserRequest(GenericAPIView):
@@ -338,6 +338,20 @@ class EventAPI(GenericAPIView):
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
+	def post(self,request,pk):
+		try:
+			event = Event.objects.filter(date__year=pk)
+			serializer = self.serializer_class(event,many = True)
+			data = dict()
+			data['events'] = serializer.data
+			if request.user.is_staff:
+				data['can_add'] = True
+			else:
+				data['can_add'] = False
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
 	def put(self,request,pk):
 		try:
 			event = Event.objects.get(id = pk)
@@ -369,7 +383,12 @@ class EventListAPI(GenericAPIView):
 		try:
 			event = self.get_queryset()
 			serializer = self.serializer_class(event,many = True)
-			data = serializer.data
+			data = dict()
+			data['events'] = serializer.data
+			if request.user.is_staff:
+				data['can_add'] = True
+			else:
+				data['can_add'] = False
 			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
