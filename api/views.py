@@ -1,4 +1,4 @@
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, UpdateAPIView
 from rest_framework import status,permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
@@ -402,5 +402,20 @@ class EventListAPI(GenericAPIView):
 				serializer.save()
 			data = serializer.data
 			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class ChangePasswordView(GenericAPIView):
+	permission_classes = [permissions.IsAuthenticated,]
+
+	def post(self,request):
+		try:
+			old_password = request.data["old_password"]
+			new_password = request.data["new_password"]
+			if not request.user.check_password(old_password):
+				return Response({"status" : False ,"data" : {"old_password": "wrong_password" }, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+			request.user.set_password(new_password)
+			request.user.save()
+			return Response({"status" : True ,"data" : {"new_password": "success" }, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
