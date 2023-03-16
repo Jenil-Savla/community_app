@@ -13,6 +13,7 @@ urlpatterns = [
     path('add-member/<str:pk>', views.MemberAPI.as_view(), name="Add-Member"),
     path('event/<str:pk>', views.EventAPI.as_view(), name="Event"),
     path('events/', views.EventListAPI.as_view(), name="Event-List"),
+    path('content/', views.ContentListAPI.as_view(), name="Content"),
     
     path('homepage', views.homepage, name="Homepage"),
 ]

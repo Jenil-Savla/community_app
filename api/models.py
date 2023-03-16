@@ -116,3 +116,26 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+class Content(models.Model):
+    title = models.CharField(max_length=80)
+    details = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return self.title
+    
+class SocietyMember(models.Model):
+    name = models.CharField(max_length=80)
+    city = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.name
+    
+class Founder(models.Model):
+    name = models.CharField(max_length=80)
+    city = models.CharField(max_length=80)
+    about = models.TextField(max_length=1000)
+    profile_pic = models.ImageField(upload_to = 'founders/',blank = True, null=True)
+
+    def __str__(self):
+        return self.name

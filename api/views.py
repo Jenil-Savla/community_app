@@ -10,8 +10,8 @@ from django.urls import reverse
 from django.db.models import Q
 import random
 
-from .models import User, Village, Family, OccupationAddress, Event
-from .serializers import RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer
+from .models import Content, User, Village, Family, OccupationAddress, Event, SocietyMember, Founder
+from .serializers import ContentSerializer, RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer, SocietyMemberSerializer, FounderSerializer
 from . import util
 
 class IsAdminUserOrReadOnly(permissions.IsAdminUser):
@@ -417,5 +417,32 @@ class ChangePasswordView(GenericAPIView):
 			request.user.set_password(new_password)
 			request.user.save()
 			return Response({"status" : True ,"data" : {"new_password": "success" }, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class ContentListAPI(GenericAPIView):
+	serializer_class = ContentSerializer
+	queryset = Content.objects.all()
+
+	def get(self,request):
+		try:
+			content = self.get_queryset()
+			serializer = self.serializer_class(content,many = True)
+			data = dict()
+			data['contents'] = serializer.data
+			founders = Founder.objects.all().order_by('city')
+			founder_serializer = FounderSerializer(founders,many = True)
+			data['founders'] = founder_serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def post(self,request):
+		try:
+			city = request.data["city"]
+			society_member = SocietyMember.objects.filter(city__icontains = city)
+			serializer = SocietyMemberSerializer(society_member,many = True)
+			data = serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
