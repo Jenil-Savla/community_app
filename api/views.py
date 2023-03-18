@@ -429,7 +429,8 @@ class ContentListAPI(GenericAPIView):
 			content = self.get_queryset()
 			serializer = self.serializer_class(content,many = True)
 			data = dict()
-			data['contents'] = serializer.data
+			for i in serializer.data:
+				data[i['title']] = i['details']
 			founders = Founder.objects.all().order_by('city')
 			founder_serializer = FounderSerializer(founders,many = True)
 			data['founders'] = founder_serializer.data
