@@ -70,3 +70,43 @@ class FounderSerializer(serializers.ModelSerializer):
 	class Meta:
 		model =  Founder
 		fields = '__all__'
+
+class UpdatedMemberSerializer(serializers.ModelSerializer):
+	home_address = serializers.SerializerMethodField(read_only=True)
+	village_address = serializers.SerializerMethodField(read_only=True)
+	class Meta:
+		model = User
+		fields = ["email",
+            "is_superuser",
+            "first_name",
+            "last_name",
+            "is_staff",
+            "is_active",
+            "date_joined",
+            "phone",
+            "relation",
+            "country",
+            "city",
+            "dob",
+            "education",
+            "occupation",
+            "village",
+            "gender",
+            "blood_group",
+            "maritial_status",
+            "in_laws_village",
+            "profile_pic",
+	    	"related_family",
+	    	"home_address",
+		    "village_address"
+			]
+		
+	def get_home_address(self,obj):
+		family = Family.objects.get(id=obj.related_family.id)
+		serializer = FamilySerializer(family)
+		return serializer.data['home_address']
+	
+	def get_village_address(self,obj):
+		family = Family.objects.get(id=obj.related_family.id)
+		serializer = FamilySerializer(family)
+		return serializer.data['village_address']

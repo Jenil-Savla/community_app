@@ -11,7 +11,7 @@ from django.db.models import Q
 import random
 
 from .models import Content, User, Village, Family, OccupationAddress, Event, SocietyMember, Founder
-from .serializers import ContentSerializer, RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer, SocietyMemberSerializer, FounderSerializer
+from .serializers import ContentSerializer, RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer, SocietyMemberSerializer, FounderSerializer, UpdatedMemberSerializer
 from . import util
 
 class IsAdminUserOrReadOnly(permissions.IsAdminUser):
@@ -108,7 +108,7 @@ class UserRequest(GenericAPIView):
 		
 class MemberListAPI(GenericAPIView):
 	
-	serializer_class = MemberSerializer
+	serializer_class = UpdatedMemberSerializer
 	queryset = User.objects.all()
 	permission_classes = [permissions.IsAuthenticated,]
 
