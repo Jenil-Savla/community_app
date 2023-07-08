@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.db.models import Q
@@ -44,10 +44,11 @@ class RegisterAPI(GenericAPIView):
 		try:
 			data = request.data
 			data = dict(data)
-			data['password'] = '12345678'
+			data['password'] = data['email'][:8]
 			serializer = self.serializer_class(data=data)
 			if serializer.is_valid(raise_exception = True):
 				user = serializer.save()
+				print(user.password)
 				token = Token.objects.create(user=user)
 				'''current_site = get_current_site(request).domain
 				relative_link = reverse('email-verify')
@@ -57,7 +58,8 @@ class RegisterAPI(GenericAPIView):
 				village = Village.objects.get(name__icontains = data['village'])
 				family = Family.objects.create(head = user, village = village)
 				occupation = OccupationAddress.objects.create(family=family)
-				user = serializer.save(related_family = family)
+				user.related_family = family
+				user.save()
 				return Response({"status" : True ,"data" : serializer.data, "message" : 'Request Sent'},status=status.HTTP_200_OK)
 			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
 		except Exception as e:
@@ -70,8 +72,12 @@ class LoginAPI(GenericAPIView):
 	def post(self,request,*args,**kwargs ):
 		email = request.data.get('email',None)
 		password = request.data.get('password',None)
+
+		print(email,password)
 		user = authenticate(email = email, password = password)
+		print(user)
 		if user :
+			login(request,user)
 			serializer = self.serializer_class(user)
 			token = Token.objects.get(user=user)
 			return Response({"status" : True ,"data" : {'token' : token.key,'email' : user.email, 'family':user.related_family.id}, "message" : 'Login Success'},status = status.HTTP_200_OK)

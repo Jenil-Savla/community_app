@@ -20,7 +20,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 		return attrs
 		
 	def create(self,validated_data):
-            validated_data['is_active'] = False
+            #validated_data['is_active'] = False
             return User.objects.create_user(**validated_data)
 
 class LoginSerializer(serializers.ModelSerializer):
