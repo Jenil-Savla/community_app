@@ -106,8 +106,8 @@ class User(AbstractUser):
         return token
     
 class Event(models.Model):
-    name = models.CharField(max_length=80)
-    about = models.TextField(max_length=255)
+    name = models.CharField(max_length=255)
+    about = models.TextField()
     date = models.DateField()
     venue = models.CharField(max_length=1000, default="N/A")
     start_time = models.DateTimeField()
@@ -120,23 +120,23 @@ class Event(models.Model):
         return self.name
 
 class Content(models.Model):
-    title = models.CharField(max_length=80)
-    details = models.TextField(max_length=1000)
+    title = models.CharField(max_length=255)
+    details = models.TextField()
 
     def __str__(self):
         return self.title
     
 class SocietyMember(models.Model):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=255)
     city = models.CharField(max_length=80)
 
     def __str__(self):
         return self.name
     
 class Founder(models.Model):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=255)
     city = models.CharField(max_length=80)
-    about = models.TextField(max_length=1000)
+    about = models.TextField()
     profile_pic = models.ImageField(upload_to = 'founders/',blank = True, null=True)
 
     def __str__(self):
