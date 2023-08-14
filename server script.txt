@@ -1,0 +1,23 @@
+ssh root@93.188.167.8
+
+cd venv/bin
+   chmod +x activate
+   source activate
+
+touch .env
+nano .env
+export VARIABLE_NAME="value"
+source .env
+
+python manage.py runserver 0.0.0.0:443
+
+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
+
+
+nohup python manage.py runserver 0.0.0.0:8000 &
+
+sudo service nginx restart
+
+
+pkill gunicorn
+gunicorn community_app.wsgi:application --bind 0.0.0.0:8000 &

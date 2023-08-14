@@ -1,0 +1,3066 @@
+{
+	"info": {
+		"_postman_id": "59a4dd45-5c26-4435-b48f-9a066049843f",
+		"name": "Community App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17713909",
+		"_collection_link": "https://enemiesofsyntax.postman.co/workspace/Social-Project---Prachi~0b2bdedd-63b6-4520-8189-12e1e0459b06/collection/17713909-59a4dd45-5c26-4435-b48f-9a066049843f?action=share&creator=17713909&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Prachi\",\r\n    \"last_name\": \"Patel\",\r\n    \"password\": \"pass@12345\",\r\n    \"relation\": \"Self\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Mumbai\",\r\n    \"email\": \"prachipp999@gmail.com\",\r\n    \"phone\": 9920119492,\r\n    \"dob\": \"2002-09-09\",\r\n    \"education\": \"B. Tech Computer Engineering\",\r\n    \"occupation\": \"Student\",\r\n    \"gender\": \"F\",\r\n    \"blood_group\": \"A+\",\r\n    \"maritial_status\": \"Single\",\r\n    \"village\": \"Sarva\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/register/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"User\",\r\n    \"last_name\": \"Two\",\r\n    \"relation\": \"Self\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Mumbai\",\r\n    \"email\": \"usertwo@gmail.com\",\r\n    \"phone\": 7896541230,\r\n    \"dob\": \"2023-02-05\",\r\n    \"education\": \"B. Tech\",\r\n    \"occupation\": \"Student\",\r\n    \"gender\": \"M\",\r\n    \"blood_group\": \"A+\",\r\n    \"maritial_status\": \"Single\",\r\n    \"village\": \"Baroda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/register/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 Feb 2023 11:09:15 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "299"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"first_name\": \"User\",\n    \"last_name\": \"Two\",\n    \"relation\": \"Self\",\n    \"country\": \"India\",\n    \"city\": \"Mumbai\",\n    \"email\": \"usertwo@gmail.com\",\n    \"phone\": 7896541230,\n    \"dob\": \"2023-02-05\",\n    \"education\": \"B. Tech\",\n    \"occupation\": \"Student\",\n    \"gender\": \"M\",\n    \"blood_group\": \"A+\",\n    \"maritial_status\": \"Single\",\n    \"village\": \"Baroda\",\n    \"profile_pic\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"userfive@gmail.com\",\r\n\"password\":\"user5613\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/login/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"usertwo@gmail.com\",\r\n\"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/login/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 Feb 2023 11:13:44 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"e6ad67568eb1992a6cab406c4c3cf51cfc2da5ca\",\n    \"email\": \"usertwo@gmail.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Requests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 8e2e7affe014be4d291c69ad8fcd0c6e6b728268",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/requests/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"requests",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Requests",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com//api/requests/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"",
+								"api",
+								"requests",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 Feb 2023 11:38:40 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "624"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"first_name\": \"User\",\n        \"last_name\": \"One\",\n        \"relation\": \"Self\",\n        \"country\": \"India\",\n        \"city\": \"Mumbai\",\n        \"email\": \"userone@gmail.com\",\n        \"phone\": 7896541230,\n        \"dob\": \"2023-02-05\",\n        \"education\": \"B. Tech\",\n        \"occupation\": \"Student\",\n        \"gender\": \"M\",\n        \"blood_group\": \"A+\",\n        \"maritial_status\": \"Single\",\n        \"village\": \"Baroda\",\n        \"profile_pic\": \"/media/users/stephan.jpeg\"\n    },\n    {\n        \"first_name\": \"User\",\n        \"last_name\": \"Two\",\n        \"relation\": \"Self\",\n        \"country\": \"India\",\n        \"city\": \"Mumbai\",\n        \"email\": \"usertwo@gmail.com\",\n        \"phone\": 7896541230,\n        \"dob\": \"2023-02-05\",\n        \"education\": \"B. Tech\",\n        \"occupation\": \"Student\",\n        \"gender\": \"M\",\n        \"blood_group\": \"A+\",\n        \"maritial_status\": \"Single\",\n        \"village\": \"Baroda\",\n        \"profile_pic\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Requests Accept",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"usertwo@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mrbraintastic.pythonanywhere.com/api/requests/",
+					"protocol": "http",
+					"host": [
+						"mrbraintastic",
+						"pythonanywhere",
+						"com"
+					],
+					"path": [
+						"api",
+						"requests",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Requests Accept",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"usertwo@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/requests/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"requests",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 Feb 2023 11:46:23 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "23"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": \"activated\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Content",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/content/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"content",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Content",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/content/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Mar 2023 07:18:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1894"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"contents\": [\n            {\n                \"id\": 1,\n                \"title\": \"Introduction\",\n                \"details\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n            },\n            {\n                \"id\": 2,\n                \"title\": \"42 Villages\",\n                \"details\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"History\",\n                \"details\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n            }\n        ],\n        \"founders\": [\n            {\n                \"id\": 1,\n                \"name\": \"Shri Vanibhai Virchandbhai Patel\",\n                \"city\": \"Mumbai\",\n                \"about\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\",\n                \"profile_pic\": \"/media/founders/Screenshot_815.png\"\n            }\n        ]\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Society Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\" : \"mumbai\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/content/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"content",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Society Registration",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\" : \"mumbai\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/content/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Mar 2023 07:23:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "145"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Lorem ipsum mum\",\n            \"city\": \"Mumbai\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Lorem ipsum mum2\",\n            \"city\": \"Mumbai\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Homepage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/homepage",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"homepage"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Homepage",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/homepage",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"homepage"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 10:37:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"cities\": 2,\n        \"families\": 2,\n        \"members\": 6\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Member List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/members/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"members",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Member List",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/members/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 15 Feb 2023 10:52:53 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1745"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"email\": \"admin@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$DFPt1c0eTAYSeUoZ3wIojG$TwnDNQ5FVmmRGSTBCRdGWosGAZ1kV3FiJe6hyTqeBBk=\",\n            \"last_login\": \"2023-02-15T10:45:34.925601Z\",\n            \"is_superuser\": true,\n            \"first_name\": \"\",\n            \"last_name\": \"\",\n            \"is_staff\": true,\n            \"is_active\": true,\n            \"date_joined\": \"2023-02-05T10:51:09.534774Z\",\n            \"phone\": 0,\n            \"relation\": \"\",\n            \"country\": \"\",\n            \"city\": \"\",\n            \"dob\": null,\n            \"education\": \"\",\n            \"occupation\": \"\",\n            \"village\": \"\",\n            \"gender\": \"M\",\n            \"blood_group\": \"\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        },\n        {\n            \"email\": \"userone@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$t0UOcvIJea2a6MD6k1kJFq$B6t0N1H5Zke24DLkWosv4VQ0Q/qoZt7/kSqkq94rFKw=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"One\",\n            \"last_name\": \"User\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:06:54Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Mumbai\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Baroda\",\n            \"gender\": \"M\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Patan\",\n            \"profile_pic\": \"/media/users/stephan.jpeg\",\n            \"groups\": [],\n            \"user_permissions\": []\n        },\n        {\n            \"email\": \"usertwo@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"User\",\n            \"last_name\": \"Two\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:09:14Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Pune\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Patan\",\n            \"gender\": \"F\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Baroda\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Search & Filter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"all\",\r\n    \"city\": \"all\",\r\n    \"village\": [\"Patan\",\"Baroda\"],\r\n    \"gender\": \"all\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/members/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"members",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All Users",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"all\",\r\n    \"city\": \"all\",\r\n    \"village\": \"all\",\r\n    \"gender\": \"all\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/members/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 15 Feb 2023 10:54:33 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1745"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"email\": \"admin@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$DFPt1c0eTAYSeUoZ3wIojG$TwnDNQ5FVmmRGSTBCRdGWosGAZ1kV3FiJe6hyTqeBBk=\",\n            \"last_login\": \"2023-02-15T10:45:34.925601Z\",\n            \"is_superuser\": true,\n            \"first_name\": \"\",\n            \"last_name\": \"\",\n            \"is_staff\": true,\n            \"is_active\": true,\n            \"date_joined\": \"2023-02-05T10:51:09.534774Z\",\n            \"phone\": 0,\n            \"relation\": \"\",\n            \"country\": \"\",\n            \"city\": \"\",\n            \"dob\": null,\n            \"education\": \"\",\n            \"occupation\": \"\",\n            \"village\": \"\",\n            \"gender\": \"M\",\n            \"blood_group\": \"\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        },\n        {\n            \"email\": \"userone@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$t0UOcvIJea2a6MD6k1kJFq$B6t0N1H5Zke24DLkWosv4VQ0Q/qoZt7/kSqkq94rFKw=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"One\",\n            \"last_name\": \"User\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:06:54Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Mumbai\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Baroda\",\n            \"gender\": \"M\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Patan\",\n            \"profile_pic\": \"/media/users/stephan.jpeg\",\n            \"groups\": [],\n            \"user_permissions\": []\n        },\n        {\n            \"email\": \"usertwo@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"User\",\n            \"last_name\": \"Two\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:09:14Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Pune\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Patan\",\n            \"gender\": \"F\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Baroda\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				},
+				{
+					"name": "Name Search",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"two user\",\r\n    \"city\": \"all\",\r\n    \"village\": \"all\",\r\n    \"gender\": \"all\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/members/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 15 Feb 2023 11:15:33 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "615"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"email\": \"usertwo@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"User\",\n            \"last_name\": \"Two\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:09:14Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Pune\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Patan\",\n            \"gender\": \"F\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Baroda\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				},
+				{
+					"name": "Village filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"all\",\r\n    \"city\": \"all\",\r\n    \"village\": [\"Patan\",\"Baroda\"],\r\n    \"gender\": \"all\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/members/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 15 Feb 2023 11:08:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1211"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"email\": \"userone@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$t0UOcvIJea2a6MD6k1kJFq$B6t0N1H5Zke24DLkWosv4VQ0Q/qoZt7/kSqkq94rFKw=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"One\",\n            \"last_name\": \"User\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:06:54Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Mumbai\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Baroda\",\n            \"gender\": \"M\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Patan\",\n            \"profile_pic\": \"/media/users/stephan.jpeg\",\n            \"groups\": [],\n            \"user_permissions\": []\n        },\n        {\n            \"email\": \"usertwo@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"User\",\n            \"last_name\": \"Two\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:09:14Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Pune\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Patan\",\n            \"gender\": \"F\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Baroda\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				},
+				{
+					"name": "City Filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"all\",\r\n    \"city\": \"pune\",\r\n    \"village\": \"all\",\r\n    \"gender\": \"all\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/members/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 15 Feb 2023 11:13:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "615"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"email\": \"usertwo@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"User\",\n            \"last_name\": \"Two\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:09:14Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Pune\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Patan\",\n            \"gender\": \"F\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Baroda\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				},
+				{
+					"name": "Combining gender and village",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"all\",\r\n    \"city\": \"all\",\r\n    \"village\": [\"Patan\",\"Baroda\"],\r\n    \"gender\": [\"F\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/members/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 15 Feb 2023 11:12:47 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "615"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"email\": \"usertwo@gmail.com\",\n            \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"first_name\": \"User\",\n            \"last_name\": \"Two\",\n            \"is_staff\": false,\n            \"is_active\": false,\n            \"date_joined\": \"2023-02-05T11:09:14Z\",\n            \"phone\": 7896541230,\n            \"relation\": \"Self\",\n            \"country\": \"India\",\n            \"city\": \"Pune\",\n            \"dob\": \"2023-02-05\",\n            \"education\": \"B. Tech\",\n            \"occupation\": \"Student\",\n            \"village\": \"Patan\",\n            \"gender\": \"F\",\n            \"blood_group\": \"A+\",\n            \"maritial_status\": \"Single\",\n            \"in_laws_village\": \"Baroda\",\n            \"profile_pic\": null,\n            \"groups\": [],\n            \"user_permissions\": []\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Village List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/village-list/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"village-list",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Village List",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/village-list/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"village-list",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:50:03 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Adiya\",\n            \"talak\": \"Harij\",\n            \"district\": \"Patan\",\n            \"pincode\": 284255,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Aghar\",\n            \"talak\": \"Sarswati\",\n            \"district\": \"Patan\",\n            \"pincode\": 384255,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Aithor\",\n            \"talak\": \"Unjha\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384170,\n            \"shakha\": \"None\",\n            \"no_of_families\": 1\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Balishna\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384110,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Bhandu\",\n            \"talak\": \"Visnagar\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384120,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Borsan\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Chhathiyarda\",\n            \"talak\": \"Mahesana\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384205,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Chandrumana\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384255,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Dabhadi\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384260,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Der\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384110,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Dodivada\",\n            \"talak\": \"Bechraji\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384210,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Finchal\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384212,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Hamidpur\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Hansapur\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Ijpura\",\n            \"talak\": \"Mahesana\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384410,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Islampur\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Jetalvasana\",\n            \"talak\": \"Visnagar\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384120,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Kalyana\",\n            \"talak\": \"Sidhpur\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 19,\n            \"name\": \"Kani\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384110,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 20,\n            \"name\": \"Keshani\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384225,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 21,\n            \"name\": \"Khambel\",\n            \"talak\": \"Bechraji\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384210,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 22,\n            \"name\": \"Khanpur Kodi\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 23,\n            \"name\": \"Khari Dhariyal\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384220,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 24,\n            \"name\": \"Kimbuva\",\n            \"talak\": \"Sarswati\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 25,\n            \"name\": \"Kotavad\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 26,\n            \"name\": \"Kungher\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384255,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 27,\n            \"name\": \"Maktupur\",\n            \"talak\": \"Unjha\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384170,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 28,\n            \"name\": \"Manpur\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384255,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 29,\n            \"name\": \"Manund\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384260,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 30,\n            \"name\": \"Mandotri\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 31,\n            \"name\": \"Mahemadpur\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 32,\n            \"name\": \"Mesar\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 33,\n            \"name\": \"Motidau\",\n            \"talak\": \"Mahesana\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384120,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 34,\n            \"name\": \"Palaj\",\n            \"talak\": \"Mahesana\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384410,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 35,\n            \"name\": \"Pudgam\",\n            \"talak\": \"Visnagar\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384310,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 36,\n            \"name\": \"Ranuj\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 37,\n            \"name\": \"Runi\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 38,\n            \"name\": \"Ruppur\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384220,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 39,\n            \"name\": \"Ruvavi\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 40,\n            \"name\": \"Sabosan\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 41,\n            \"name\": \"Sagodiya\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384265,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 42,\n            \"name\": \"Samoda\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384130,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 43,\n            \"name\": \"Sander\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384260,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 44,\n            \"name\": \"Sankhari\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 1\n        },\n        {\n            \"id\": 45,\n            \"name\": \"Sarsav\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384225,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 46,\n            \"name\": \"Sarva\",\n            \"talak\": \"Patan\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 47,\n            \"name\": \"Sasam\",\n            \"talak\": \"Palanpur\",\n            \"district\": \"Banaskantha\",\n            \"pincode\": 385515,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 48,\n            \"name\": \"Satusana\",\n            \"talak\": \"Visnagar\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384310,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 49,\n            \"name\": \"Shankhalpur\",\n            \"talak\": \"Bechraji\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384210,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 50,\n            \"name\": \"Sojitra\",\n            \"talak\": \"Chanasma\",\n            \"district\": \"Patan\",\n            \"pincode\": 384275,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 51,\n            \"name\": \"Tareti\",\n            \"talak\": \"Mahesana\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384001,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 52,\n            \"name\": \"Vagdod\",\n            \"talak\": \"Vagdod\",\n            \"district\": \"Patan\",\n            \"pincode\": 384285,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        },\n        {\n            \"id\": 53,\n            \"name\": \"Valam\",\n            \"talak\": \"Visnagar\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384310,\n            \"shakha\": \"None\",\n            \"no_of_families\": 0\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Family Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/family/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"family",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Family Details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/family/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"family",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:50:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": 1,\n        \"village\": {\n            \"id\": 3,\n            \"name\": \"Aithor\",\n            \"talak\": \"Unjha\",\n            \"district\": \"Mahesana\",\n            \"pincode\": 384170,\n            \"shakha\": \"None\",\n            \"no_of_families\": 1\n        },\n        \"home_address\": \"My home\",\n        \"village_address\": \"My village\",\n        \"head\": \"userone@gmail.com\",\n        \"can_edit\": true,\n        \"occupations\": [\n            {\n                \"id\": 1,\n                \"occupation_address\": \"Add 1\",\n                \"family\": 1\n            },\n            {\n                \"id\": 2,\n                \"occupation_address\": \"Add 2\",\n                \"family\": 1\n            }\n        ],\n        \"members\": [\n            {\n                \"email\": \"userone@gmail.com\",\n                \"password\": \"pbkdf2_sha256$390000$t0UOcvIJea2a6MD6k1kJFq$B6t0N1H5Zke24DLkWosv4VQ0Q/qoZt7/kSqkq94rFKw=\",\n                \"last_login\": null,\n                \"is_superuser\": false,\n                \"first_name\": \"One\",\n                \"last_name\": \"User\",\n                \"is_staff\": false,\n                \"is_active\": true,\n                \"date_joined\": \"2023-02-05T11:06:54Z\",\n                \"phone\": 7896541230,\n                \"relation\": \"Self\",\n                \"country\": \"India\",\n                \"city\": \"Mumbai\",\n                \"dob\": \"2023-02-05\",\n                \"education\": \"B. Tech\",\n                \"occupation\": \"Student\",\n                \"village\": \"Baroda\",\n                \"gender\": \"M\",\n                \"blood_group\": \"A+\",\n                \"maritial_status\": \"Single\",\n                \"in_laws_village\": \"Patan\",\n                \"profile_pic\": \"/media/users/stephan.jpeg\",\n                \"related_family\": 1,\n                \"groups\": [],\n                \"user_permissions\": []\n            },\n            {\n                \"email\": \"usertwo@gmail.com\",\n                \"password\": \"pbkdf2_sha256$390000$eZgg4119MNyemiEz2IlV2C$0bqhV7xhnYlxA8qV6dkZUy3qdwd6a2aqCUvkXDPFrRA=\",\n                \"last_login\": null,\n                \"is_superuser\": false,\n                \"first_name\": \"User\",\n                \"last_name\": \"Two\",\n                \"is_staff\": false,\n                \"is_active\": false,\n                \"date_joined\": \"2023-02-05T11:09:14Z\",\n                \"phone\": 7896541230,\n                \"relation\": \"Self\",\n                \"country\": \"India\",\n                \"city\": \"Pune\",\n                \"dob\": \"2023-02-05\",\n                \"education\": \"B. Tech\",\n                \"occupation\": \"Student\",\n                \"village\": \"Patan\",\n                \"gender\": \"F\",\n                \"blood_group\": \"A+\",\n                \"maritial_status\": \"Single\",\n                \"in_laws_village\": \"Baroda\",\n                \"profile_pic\": null,\n                \"related_family\": 1,\n                \"groups\": [],\n                \"user_permissions\": []\n            },\n            {\n                \"email\": \"abc@gmail.com\",\n                \"password\": \"abc@9970\",\n                \"last_login\": null,\n                \"is_superuser\": false,\n                \"first_name\": \"ABC\",\n                \"last_name\": \"XYZ\",\n                \"is_staff\": false,\n                \"is_active\": true,\n                \"date_joined\": \"2023-02-17T09:21:15Z\",\n                \"phone\": 9980765432,\n                \"relation\": \"Son\",\n                \"country\": \"India\",\n                \"city\": \"Ahmedabad\",\n                \"dob\": \"2023-02-05\",\n                \"education\": \"BA\",\n                \"occupation\": \"Student\",\n                \"village\": \"Aithor\",\n                \"gender\": \"F\",\n                \"blood_group\": \"O-\",\n                \"maritial_status\": \"Unmarried\",\n                \"in_laws_village\": \"Aithor\",\n                \"profile_pic\": null,\n                \"related_family\": 1,\n                \"groups\": [],\n                \"user_permissions\": []\n            },\n            {\n                \"email\": \"abc2@gmail.com\",\n                \"password\": \"abc23599\",\n                \"last_login\": null,\n                \"is_superuser\": false,\n                \"first_name\": \"ABC2\",\n                \"last_name\": \"XYZ\",\n                \"is_staff\": false,\n                \"is_active\": true,\n                \"date_joined\": \"2023-02-17T09:23:59.567067Z\",\n                \"phone\": 9980765432,\n                \"relation\": \"Son\",\n                \"country\": \"India\",\n                \"city\": \"Mumbai\",\n                \"dob\": \"2023-02-05\",\n                \"education\": \"BA\",\n                \"occupation\": \"Student\",\n                \"village\": \"Aithor\",\n                \"gender\": \"M\",\n                \"blood_group\": \"O-\",\n                \"maritial_status\": \"Unmarried\",\n                \"in_laws_village\": \"Aithor\",\n                \"profile_pic\": null,\n                \"related_family\": 1,\n                \"groups\": [],\n                \"user_permissions\": []\n            }\n        ]\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Family Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 1,\r\n        \"home_address\": \"My home xghwvc\",\r\n        \"village_address\": \"My village\",\r\n        \"occupations\": [\r\n            {\r\n                \"id\": 1,\r\n                \"occupation_address\": \"Add 11\",\r\n                \"family\": 1\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"occupation_address\": \"Add 21 hgctg\",\r\n                \"family\": 1\r\n            }\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/family/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"family",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Family Update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"home_address\": \"My home\",\r\n        \"village_address\": \"My village\",\r\n        \"occupations\": [\r\n            {\r\n                \"id\": 1,\r\n                \"occupation_address\": \"Add 1\",\r\n                \"family\": 1\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"occupation_address\": \"Add 2\",\r\n                \"family\": 1\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/family/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"family",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Feb 2023 12:46:54 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {},\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Occupation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"occupation_address\":\"DJSCE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/family/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"family",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Occupation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"occupation_address\":\"DJSCE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/family/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"family",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 16 Feb 2023 13:03:42 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {},\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Member Details ( To prefill in Edit Page)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/add-member/abc@gmail.com",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"add-member",
+						"abc@gmail.com"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Member Details ( To prefill in Edit Page)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/add-member/abc@gmail.com",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"add-member",
+								"abc@gmail.com"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:50:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"email\": \"abc@gmail.com\",\n        \"password\": \"abc@9970\",\n        \"last_login\": null,\n        \"is_superuser\": false,\n        \"first_name\": \"ABC\",\n        \"last_name\": \"XYZ\",\n        \"is_staff\": false,\n        \"is_active\": true,\n        \"date_joined\": \"2023-02-17T09:21:15Z\",\n        \"phone\": 9980765432,\n        \"relation\": \"Son\",\n        \"country\": \"India\",\n        \"city\": \"Ahmedabad\",\n        \"dob\": \"2023-02-05\",\n        \"education\": \"BA\",\n        \"occupation\": \"Student\",\n        \"village\": \"Aithor\",\n        \"gender\": \"F\",\n        \"blood_group\": \"O-\",\n        \"maritial_status\": \"Unmarried\",\n        \"in_laws_village\": \"Aithor\",\n        \"profile_pic\": null,\n        \"related_family\": 1,\n        \"groups\": [],\n        \"user_permissions\": []\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Member",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"ABC\",\r\n    \"last_name\":\"XYZ\",\r\n    \"relation\":\"Son\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Mumbai\",\r\n    \"phone\": \"9980765432\",\r\n    \"dob\":\"2023-02-05\",\r\n    \"education\": \"BA\",\r\n    \"occupation\": \"Student\",\r\n    \"blood_group\": \"O-\",\r\n    \"gender\":\"F\",\r\n    \"maritial_status\":\"Unmarried\",\r\n    \"in_laws_village\": \"Aithor\",\r\n    \"email\":\"abc1@gmail.com\",\r\n    \"profile_pic\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/add-member/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"add-member",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Member",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"ABC\",\r\n    \"last_name\":\"XYZ\",\r\n    \"relation\":\"Son\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Mumbai\",\r\n    \"phone\": \"9980765432\",\r\n    \"dob\":\"2023-02-05\",\r\n    \"education\": \"BA\",\r\n    \"occupation\": \"Student\",\r\n    \"blood_group\": \"O-\",\r\n    \"gender\":\"F\",\r\n    \"maritial_status\":\"Unmarried\",\r\n    \"in_laws_village\": \"Aithor\",\r\n    \"email\":\"abc2@gmail.com\",\r\n    \"profile_pic\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/add-member/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"add-member",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 09:23:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "554"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"email\": \"abc2@gmail.com\",\n        \"password\": \"abc29811\",\n        \"last_login\": null,\n        \"is_superuser\": false,\n        \"first_name\": \"ABC\",\n        \"last_name\": \"XYZ\",\n        \"is_staff\": false,\n        \"is_active\": true,\n        \"date_joined\": \"2023-02-17T09:23:59.567067Z\",\n        \"phone\": 9980765432,\n        \"relation\": \"Son\",\n        \"country\": \"India\",\n        \"city\": \"Mumbai\",\n        \"dob\": \"2023-02-05\",\n        \"education\": \"BA\",\n        \"occupation\": \"Student\",\n        \"village\": \"Aithor\",\n        \"gender\": \"F\",\n        \"blood_group\": \"O-\",\n        \"maritial_status\": \"Unmarried\",\n        \"in_laws_village\": \"Aithor\",\n        \"profile_pic\": null,\n        \"related_family\": 1,\n        \"groups\": [],\n        \"user_permissions\": []\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit Member",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"ABC1\",\r\n    \"last_name\":\"XYZ\",\r\n    \"relation\":\"Son\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Mumbai\",\r\n    \"phone\": \"9980765432\",\r\n    \"dob\":\"2023-02-05\",\r\n    \"education\": \"BA\",\r\n    \"occupation\": \"Student\",\r\n    \"blood_group\": \"O-\",\r\n    \"gender\":\"M\",\r\n    \"maritial_status\":\"Unmarried\",\r\n    \"in_laws_village\": \"Aithor\",\r\n    \"email\":\"abc1@gmail.com\",\r\n    \"profile_pic\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/add-member/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"add-member",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit Member",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"ABC2\",\r\n    \"last_name\":\"XYZ\",\r\n    \"relation\":\"Son\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Mumbai\",\r\n    \"phone\": \"9980765432\",\r\n    \"dob\":\"2023-02-05\",\r\n    \"education\": \"BA\",\r\n    \"occupation\": \"Student\",\r\n    \"blood_group\": \"O-\",\r\n    \"gender\":\"M\",\r\n    \"maritial_status\":\"Unmarried\",\r\n    \"in_laws_village\": \"Aithor\",\r\n    \"email\":\"abc2@gmail.com\",\r\n    \"profile_pic\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/add-member/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"add-member",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 09:47:01 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, PUT, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "555"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"email\": \"abc2@gmail.com\",\n        \"password\": \"abc23599\",\n        \"last_login\": null,\n        \"is_superuser\": false,\n        \"first_name\": \"ABC2\",\n        \"last_name\": \"XYZ\",\n        \"is_staff\": false,\n        \"is_active\": true,\n        \"date_joined\": \"2023-02-17T09:23:59.567067Z\",\n        \"phone\": 9980765432,\n        \"relation\": \"Son\",\n        \"country\": \"India\",\n        \"city\": \"Mumbai\",\n        \"dob\": \"2023-02-05\",\n        \"education\": \"BA\",\n        \"occupation\": \"Student\",\n        \"village\": \"Aithor\",\n        \"gender\": \"M\",\n        \"blood_group\": \"O-\",\n        \"maritial_status\": \"Unmarried\",\n        \"in_laws_village\": \"Aithor\",\n        \"profile_pic\": null,\n        \"related_family\": 1,\n        \"groups\": [],\n        \"user_permissions\": []\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Member",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"abc1@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/add-member/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"add-member",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Member",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d6220ca749b3253ed979456f43f74c8fc58ec82a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"abc1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/add-member/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"add-member",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 09:51:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, PUT, DELETE, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {},\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Event List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/events/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Event List",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/events/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:51:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Test event\",\n            \"about\": \"An academic awards ceremony\",\n            \"date\": \"2023-02-18\",\n            \"venue\": \"DJSCE\",\n            \"start_time\": \"2023-02-17T11:35:25Z\",\n            \"end_time\": \"2023-02-17T18:00:00Z\",\n            \"photos\": null,\n            \"pdf\": null,\n            \"picture\": null\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Academic Awards\",\n            \"about\": \"An academic awards ceremony\",\n            \"date\": \"2023-02-17\",\n            \"venue\": \"DJSCE\",\n            \"start_time\": \"2023-02-17T11:35:25Z\",\n            \"end_time\": \"2023-02-17T18:00:00Z\",\n            \"photos\": null,\n            \"pdf\": null,\n            \"picture\": \"/media/events/random_forest_regressor.jpg\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Event Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"name\": \"Test event 2\",\r\n            \"about\": \"An academic awards ceremony\",\r\n            \"date\": \"2023-02-16\",\r\n            \"venue\": \"DJSCE\",\r\n            \"start_time\": \"2023-02-17T11:35:25Z\",\r\n            \"end_time\": \"2023-02-17T18:00:00Z\",\r\n            \"photos\": null,\r\n            \"pdf\": null,\r\n            \"picture\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/events/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Event Create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"Test event 2\",\r\n            \"about\": \"An academic awards ceremony\",\r\n            \"date\": \"2023-02-16\",\r\n            \"venue\": \"DJSCE\",\r\n            \"start_time\": \"2023-02-17T11:35:25Z\",\r\n            \"end_time\": \"2023-02-17T18:00:00Z\",\r\n            \"photos\": null,\r\n            \"pdf\": null,\r\n            \"picture\": null\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/events/",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:51:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"Test event 2\",\n        \"about\": \"An academic awards ceremony\",\n        \"date\": \"2023-02-16\",\n        \"venue\": \"DJSCE\",\n        \"start_time\": \"2023-02-17T11:35:25Z\",\n        \"end_time\": \"2023-02-17T18:00:00Z\",\n        \"photos\": null,\n        \"pdf\": null,\n        \"picture\": null\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Event Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/event/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Event Details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/event/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"event",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:52:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Academic Awards\",\n        \"about\": \"An academic awards ceremony\",\n        \"date\": \"2023-02-17\",\n        \"venue\": \"DJSCE\",\n        \"start_time\": \"2023-02-17T11:35:25Z\",\n        \"end_time\": \"2023-02-17T18:00:00Z\",\n        \"photos\": null,\n        \"pdf\": null,\n        \"picture\": \"/media/events/random_forest_regressor.jpg\",\n        \"can_edit\": true\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Event by year",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/event/2023",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"event",
+						"2023"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Event by year",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/event/2023",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"event",
+								"2023"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 22 Feb 2023 04:33:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"events\": [\n            {\n                \"id\": 1,\n                \"name\": \"Academic Awards\",\n                \"about\": \"An academic awards ceremony\",\n                \"date\": \"2023-02-17\",\n                \"venue\": \"DJSCE\",\n                \"start_time\": \"2023-02-17T11:35:25Z\",\n                \"end_time\": \"2023-02-17T18:00:00Z\",\n                \"photos\": null,\n                \"pdf\": null,\n                \"picture\": \"/media/events/random_forest_regressor.jpg\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Test event\",\n                \"about\": \"An academic awards ceremony\",\n                \"date\": \"2023-02-18\",\n                \"venue\": \"DJSCE\",\n                \"start_time\": \"2023-02-17T11:35:25Z\",\n                \"end_time\": \"2023-02-17T18:00:00Z\",\n                \"photos\": null,\n                \"pdf\": null,\n                \"picture\": null\n            }\n        ],\n        \"can_add\": true\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Event Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 1,\r\n        \"name\": \"Academic Awards\",\r\n        \"about\": \"An academic awards ceremony\",\r\n        \"date\": \"2023-02-17\",\r\n        \"venue\": \"DJSCE, Vile Parle\",\r\n        \"start_time\": \"2023-02-17T11:35:25Z\",\r\n        \"end_time\": \"2023-02-17T18:00:00Z\",\r\n        \"photos\": null,\r\n        \"pdf\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/event/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Event Update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"name\": \"Academic Awards\",\r\n        \"about\": \"An academic awards ceremony\",\r\n        \"date\": \"2023-02-17\",\r\n        \"venue\": \"DJSCE, Vile Parle\",\r\n        \"start_time\": \"2023-02-17T11:35:25Z\",\r\n        \"end_time\": \"2023-02-17T18:00:00Z\",\r\n        \"photos\": null,\r\n        \"pdf\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/event/1",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"event",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:52:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Academic Awards\",\n        \"about\": \"An academic awards ceremony\",\n        \"date\": \"2023-02-17\",\n        \"venue\": \"DJSCE, Vile Parle\",\n        \"start_time\": \"2023-02-17T11:35:25Z\",\n        \"end_time\": \"2023-02-17T18:00:00Z\",\n        \"photos\": null,\n        \"pdf\": null,\n        \"picture\": \"/media/events/random_forest_regressor.jpg\"\n    },\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Event Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/event/1",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Event Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d891591448dca5be7935da2f8b39830f43acc4e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"name\": \"Academic Awards\",\r\n        \"about\": \"An academic awards ceremony\",\r\n        \"date\": \"2023-02-17\",\r\n        \"venue\": \"DJSCE\",\r\n        \"start_time\": \"2023-02-17T11:35:25Z\",\r\n        \"end_time\": \"2023-02-17T18:00:00Z\",\r\n        \"photos\": null,\r\n        \"pdf\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mrbraintastic.pythonanywhere.com/api/event/4",
+							"protocol": "http",
+							"host": [
+								"mrbraintastic",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"api",
+								"event",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 17 Feb 2023 12:53:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Clacks-Overhead",
+							"value": "GNU Terry Pratchett"
+						},
+						{
+							"key": "Server",
+							"value": "PythonAnywhere"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"data\": {},\n    \"message\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Change Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token e6ad67568eb1992a6cab406c4c3cf51cfc2da5ca",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"old_password\": \"user2345\",\r\n    \"new_password\": \"user1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://42leuvapatidarsamajmumbai.in/api/change-password/",
+					"protocol": "https",
+					"host": [
+						"42leuvapatidarsamajmumbai",
+						"in"
+					],
+					"path": [
+						"api",
+						"change-password",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

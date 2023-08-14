@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Village, Family, OccupationAddress, Event, Content, SocietyMember, Founder
+from .models import User, Village, Family, OccupationAddress, Event, Content, SocietyMember, Founder, CommitteeMember, Blog
 
 import re
 email_pattern = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
@@ -9,7 +9,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = User
-		fields = ['first_name','last_name','relation','country','city','email','password','phone','dob','education','occupation','gender','blood_group','maritial_status','village','profile_pic']
+		fields = ['first_name','last_name','relation','country','city','email','password','phone','dob','education','occupation','gender','blood_group','maritial_status','village','profile_pic','shakha','in_laws_village','in_laws_shakha']
 		#exclude = ['is_active','is_staff','is_superuser','groups','user_permissions','last_login','date_joined']
 
 	def validate(self,attrs):
@@ -91,10 +91,12 @@ class UpdatedMemberSerializer(serializers.ModelSerializer):
             "education",
             "occupation",
             "village",
+			"shakha",
             "gender",
             "blood_group",
             "maritial_status",
             "in_laws_village",
+			"in_laws_shakha",
             "profile_pic",
 	    	"related_family",
 	    	"home_address",
@@ -110,3 +112,18 @@ class UpdatedMemberSerializer(serializers.ModelSerializer):
 		family = Family.objects.get(id=obj.related_family.id)
 		serializer = FamilySerializer(family)
 		return serializer.data['village_address']
+
+class CommitteeMemberSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = CommitteeMember
+		fields = '__all__'
+
+class BlogSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Blog
+		fields = '__all__'
+
+class ForgotPasswordSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ['email']

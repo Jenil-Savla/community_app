@@ -10,8 +10,8 @@ from django.urls import reverse
 from django.db.models import Q
 import random
 
-from .models import Content, User, Village, Family, OccupationAddress, Event, SocietyMember, Founder
-from .serializers import ContentSerializer, RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer, SocietyMemberSerializer, FounderSerializer, UpdatedMemberSerializer
+from .models import CommitteeMember, Content, User, Village, Family, OccupationAddress, Event, SocietyMember, Founder, Blog
+from .serializers import CommitteeMemberSerializer, ContentSerializer, ForgotPasswordSerializer, RegisterSerializer,LoginSerializer,MemberSerializer,VillageSerializer,FamilySerializer,OccupationAddressSerializer, EventSerializer, SocietyMemberSerializer, FounderSerializer, UpdatedMemberSerializer, BlogSerializer
 from . import util
 
 class IsAdminUserOrReadOnly(permissions.IsAdminUser):
@@ -79,7 +79,7 @@ class LoginAPI(GenericAPIView):
 		if user :
 			login(request,user)
 			serializer = self.serializer_class(user)
-			token = Token.objects.get(user=user)
+			token,k = Token.objects.get_or_create(user=user)
 			return Response({"status" : True ,"data" : {'token' : token.key,'email' : user.email, 'family':user.related_family.id}, "message" : 'Login Success'},status = status.HTTP_200_OK)
 		return Response({"status" : False ,"data" : {}, "message" : 'Invalid Credentials'},status = status.HTTP_401_UNAUTHORIZED)
 	
@@ -129,6 +129,7 @@ class MemberListAPI(GenericAPIView):
 	def post(self,request):
 		try:
 			filter_data = request.data
+			maritial_status = request.GET.get('maritial_status',None)
 			if filter_data['name'] == 'all':
 				if filter_data['city'] != 'all' and filter_data['village'] != 'all' and filter_data['gender'] != 'all':
 					users = User.objects.filter(city__icontains = filter_data['city'], village__in = filter_data['village'], gender__in =  filter_data['gender'])
@@ -184,11 +185,13 @@ class MemberListAPI(GenericAPIView):
 						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname, city__icontains = filter_data['city']) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname, city__icontains = filter_data['city'])
 					else:
 						users = User.objects.filter(first_name__icontains = fname, last_name__icontains = lname) | User.objects.filter(first_name__icontains = lname, last_name__icontains = fname)
-				
+			if maritial_status:
+				users = users.filter(maritial_status__icontains = maritial_status)
 			serializer = self.serializer_class(users, many=True)
 			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
 
-		except:
+		except Exception as e:
+			print(e)
 			return Response({"status" : False ,"data" : {}, "message" : "Invalid filter"}, status=status.HTTP_400_BAD_REQUEST)
 		
 class VillageAPI(GenericAPIView):
@@ -285,7 +288,7 @@ class MemberAPI(GenericAPIView):
 		try:
 			data = dict(request.data)
 			family = Family.objects.get(id = pk)
-			if request.user != family.head:
+			if (request.user != family.head):
 				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can add member"}, status=status.HTTP_400_BAD_REQUEST)
 			data['password'] = data['email'][:4]+str(random.randint(1000,9999))
 			data['village'] = family.village.name
@@ -294,7 +297,8 @@ class MemberAPI(GenericAPIView):
 			if serializer.is_valid(raise_exception=True):
 				serializer.save()
 			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
-		except:
+		except Exception as e:
+			print(e)
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 	
 	def put(self,request,pk):
@@ -452,4 +456,76 @@ class ContentListAPI(GenericAPIView):
 			data = serializer.data
 			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
 		except:
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class CommitteeMemberListAPI(GenericAPIView):
+	serializer_class = CommitteeMemberSerializer
+	queryset = CommitteeMember.objects.all()
+	
+	def get(self,request):
+		try:
+			committee_member = self.get_queryset()
+			serializer = self.serializer_class(committee_member,many = True)
+			data = serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def post(self,request):
+		try:
+			serializer = CommitteeMemberSerializer(data = request.data)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+				data = serializer.data
+				return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class BlogListAPI(GenericAPIView):
+	serializer_class = BlogSerializer
+	queryset = Blog.objects.filter(is_active = True)
+	
+	def get(self,request):
+		try:
+			blog = self.get_queryset().order_by('-updated_at')
+			serializer = self.serializer_class(blog,many = True)
+			data = serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def post(self,request):
+		try:
+			ad = request.data.get('is_advertisement',None)
+			if ad:
+				if type(ad) == str:
+					if ad == "true":
+						request.data['is_advertisement'] = True
+					else:
+						request.data['is_advertisement'] = False
+			serializer = BlogSerializer(data = request.data)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+				data = serializer.data
+				return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+class ForgotPasswordAPI(GenericAPIView):
+	serializer_class = ForgotPasswordSerializer
+	
+	def post(self,request):
+		try:
+			email = request.data['email']
+			user = User.objects.get(email = email)
+			password = email[:4]+str(random.randint(1000,9999))
+			data ={'email_body': f"Your password has been reset.\nUsername: {user.email}\nPassword: {password}", 'email_subject': "Password Reset",'to_email':user.email}
+			util.send_email(data)
+			user.set_password(password)
+			user.save()
+			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+		except Exception as e:
+			print(e)
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -85,10 +85,12 @@ class User(AbstractUser):
     education = models.CharField(max_length=50)
     occupation = models.CharField(max_length=50)
     village = models.CharField(max_length=50)
+    shakha = models.CharField(max_length=50, blank=True, null=True)
     gender = models.CharField(default = 'Male',max_length = 10)
     blood_group=models.CharField(max_length=50)
     maritial_status = models.CharField(default = 'Single',max_length = 10)
     in_laws_village = models.CharField(max_length=50, blank=True, null=True)
+    in_laws_shakha = models.CharField(max_length=50, blank=True, null=True)
     profile_pic = models.ImageField(upload_to = 'users/',blank = True, null=True)
     related_family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
 
@@ -141,3 +143,25 @@ class Founder(models.Model):
 
     def __str__(self):
         return self.name
+
+class CommitteeMember(models.Model):
+    name = models.CharField(max_length=255)
+    position = models.CharField(max_length=80, default="Member")
+    detail = models.TextField(default="Current Committee Member")
+    profile_pic = models.ImageField(upload_to = 'committee-members/',blank = True, null=True)
+
+    def __str__(self):
+        return self.name
+    
+class Blog(models.Model):
+    title = models.CharField(max_length=255)
+    details = models.TextField(default="NA")
+    picture = models.ImageField(upload_to = 'blogs/',blank = True, null=True)
+    phone = models.BigIntegerField(default=0000000000)
+    is_advertisement = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
