@@ -287,6 +287,9 @@ class MemberAPI(GenericAPIView):
 	def post(self,request,pk):
 		try:
 			data = dict(request.data)
+			if(type(data['email']) == list):
+				for i in data.keys():
+					data[i] = data[i][0]
 			family = Family.objects.get(id = pk)
 			if (request.user != family.head):
 				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can add member"}, status=status.HTTP_400_BAD_REQUEST)
@@ -304,18 +307,23 @@ class MemberAPI(GenericAPIView):
 	def put(self,request,pk):
 		try:
 			data = dict(request.data)
+			if(type(data['email']) == list):
+				for i in data.keys():
+					data[i] = data[i][0]
 			family = Family.objects.get(id = pk)
 			if request.user != family.head:
 				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can edit member"}, status=status.HTTP_400_BAD_REQUEST)
-			data['password'] = data['email'][:4]+str(random.randint(1000,9999))
+			#data['password'] = data['email'][:4]+str(random.randint(1000,9999))
 			data['village'] = family.village.name
 			data['related_family'] = family.id
 			user = User.objects.get(email = data['email'])
 			serializer = MemberSerializer(instance = user, data=data, partial = True)
 			if serializer.is_valid(raise_exception=True):
 				serializer.save()
-			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
-		except:
+				return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as e:
+			print(e)
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
 	def delete(self,request,pk):
@@ -524,6 +532,26 @@ class ForgotPasswordAPI(GenericAPIView):
 			data ={'email_body': f"Your password has been reset.\nUsername: {user.email}\nPassword: {password}", 'email_subject': "Password Reset",'to_email':user.email}
 			util.send_email(data)
 			user.set_password(password)
+			user.save()
+			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+		except Exception as e:
+			print(e)
+			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+
+class UpdateEmailAPI(GenericAPIView):
+	permission_classes = [permissions.IsAuthenticated,]
+	
+	def post(self,request):
+		try:
+			email = request.data['email']
+			user = User.objects.get(email = email)
+			print(user.related_family, request.user.related_family, request.user.related_family != user.related_family)
+			if request.user.is_staff == False and request.user.related_family != user.related_family:
+				return Response({"status" : False ,"data" : {}, "message" : "You are not authorized to update this email"}, status=status.HTTP_400_BAD_REQUEST)
+			data ={'email_body': f"Your email has been updated by {request.user.email}.\nOld Username: {user.email}", 'email_subject': "Email Updated",'to_email':user.email}
+			util.send_email(data)
+			user.email = request.data['new_email']
 			user.save()
 			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
 		except Exception as e:
