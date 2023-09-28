@@ -45,6 +45,8 @@ class RegisterAPI(GenericAPIView):
 			data = request.data
 			data = dict(data)
 			data['password'] = data['email'][:8]
+			if not 'in_laws_name' in data.keys():
+				data['in_laws_name'] = 'NA'
 			serializer = self.serializer_class(data=data)
 			if serializer.is_valid(raise_exception = True):
 				user = serializer.save()

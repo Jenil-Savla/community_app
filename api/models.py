@@ -91,6 +91,7 @@ class User(AbstractUser):
     maritial_status = models.CharField(default = 'Single',max_length = 10)
     in_laws_village = models.CharField(max_length=50, blank=True, null=True)
     in_laws_shakha = models.CharField(max_length=50, blank=True, null=True)
+    in_laws_name = models.CharField(max_length=50, blank=True, null=True)
     profile_pic = models.ImageField(upload_to = 'users/',blank = True, null=True)
     related_family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
 
@@ -159,6 +160,7 @@ class Blog(models.Model):
     picture = models.ImageField(upload_to = 'blogs/',blank = True, null=True)
     phone = models.BigIntegerField(default=0000000000)
     is_advertisement = models.BooleanField(default=False)
+    is_job = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)

@@ -9,7 +9,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = User
-		fields = ['first_name','last_name','relation','country','city','email','password','phone','dob','education','occupation','gender','blood_group','maritial_status','village','profile_pic','shakha','in_laws_village','in_laws_shakha']
+		fields = ['first_name','last_name','relation','country','city','email','password','phone','dob','education','occupation','gender','blood_group','maritial_status','village','profile_pic','shakha','in_laws_village','in_laws_shakha', 'in_laws_name']
 		#exclude = ['is_active','is_staff','is_superuser','groups','user_permissions','last_login','date_joined']
 
 	def validate(self,attrs):
@@ -97,6 +97,7 @@ class UpdatedMemberSerializer(serializers.ModelSerializer):
             "maritial_status",
             "in_laws_village",
 			"in_laws_shakha",
+			'in_laws_name'
             "profile_pic",
 	    	"related_family",
 	    	"home_address",
