@@ -97,7 +97,7 @@ class UpdatedMemberSerializer(serializers.ModelSerializer):
             "maritial_status",
             "in_laws_village",
 			"in_laws_shakha",
-			'in_laws_name'
+			'in_laws_name',
             "profile_pic",
 	    	"related_family",
 	    	"home_address",
