@@ -57,7 +57,9 @@ class RegisterAPI(GenericAPIView):
 				link = 'http://'+current_site+relative_link+'?token='+ token.key
 				data = {'email_body': f'Use this link to get verified {link}.', 'subject':'Email Verification', 'to' : user.email}'''
 				#util.send_email(data)
-				village = Village.objects.get(name__icontains = data['village'])
+				village = Village.objects.filter(name__icontains = data['village'])
+				if village.exists():
+					village = village.first()
 				family = Family.objects.create(head = user, village = village)
 				occupation = OccupationAddress.objects.create(family=family)
 				user.related_family = family
@@ -269,8 +271,9 @@ class FamilyAPI(GenericAPIView):
 			if family_serializer.is_valid(raise_exception=True):
 				family_serializer.save()
 			return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
-		except:
-			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		except Exception as e:
+			print(e)
+			return Response({"status" : False ,"data" : {}, "message" : f"Internal Server Error + {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 	
 class MemberAPI(GenericAPIView):
 	
@@ -326,7 +329,7 @@ class MemberAPI(GenericAPIView):
 			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
 		except Exception as e:
 			print(e)
-			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+			return Response({"status" : False ,"data" : {}, "message" : f"Internal Server Error + {e.message}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
 	def delete(self,request,pk):
 		try:
