@@ -9,14 +9,18 @@ class RegisterSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = User
-		fields = ['first_name','last_name','relation','country','city','email','password','phone','dob','education','occupation','gender','blood_group','maritial_status','village','profile_pic','shakha','in_laws_village','in_laws_shakha', 'in_laws_name']
+		fields = ['first_name','last_name','relation','country','city','email','email_id','username', 'password',
+			'additional_phone','phone','dob','education','occupation','gender','blood_group','maritial_status','village',
+			'profile_pic','shakha','in_laws_village','in_laws_shakha', 'in_laws_name']
 		#exclude = ['is_active','is_staff','is_superuser','groups','user_permissions','last_login','date_joined']
 
 	def validate(self,attrs):
 		email = attrs.get('email',' ')
-
+		username = attrs.get('username',None)
 		if not email_pattern.match(email):
 			raise serializers.ValidationError('Please enter a valid email!')
+		if not username:
+			raise serializers.ValidationError('Username is required!')
 		return attrs
 		
 	def create(self,validated_data):
@@ -77,6 +81,8 @@ class UpdatedMemberSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ["email",
+			"username",
+			"email_id",
             "is_superuser",
             "first_name",
             "last_name",

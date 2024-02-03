@@ -20,4 +20,6 @@ urlpatterns = [
     path('blogs/', views.BlogListAPI.as_view(), name="Blogs"),
     
     path('homepage', views.homepage, name="Homepage"),
+
+    #path('data/', views.DataAPI.as_view(), name='Data'),
 ]

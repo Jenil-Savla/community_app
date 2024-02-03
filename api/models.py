@@ -75,9 +75,11 @@ class User(AbstractUser):
     ('Divorced','Divorced'),
     ('Widowed','Widowed'))
 
-    username=None
-    email = models.EmailField(("Email Address"),primary_key=True)
+    username=models.CharField(max_length=50, unique=True, blank=True, null=True)
+    email = models.EmailField(("Email Address"), primary_key=True)
+    email_id = models.EmailField(("Email"), blank=True, null=True)
     phone = models.BigIntegerField(default=0000000000)
+    additional_phone = models.BigIntegerField(default=0000000000)
     relation = models.CharField(max_length=50, default="Self")
     country = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
@@ -95,7 +97,7 @@ class User(AbstractUser):
     profile_pic = models.ImageField(upload_to = 'users/',blank = True, null=True)
     related_family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS=[]
 
     objects = UserManager()

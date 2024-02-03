@@ -44,7 +44,8 @@ class RegisterAPI(GenericAPIView):
 		try:
 			data = request.data
 			data = dict(data)
-			data['password'] = data['email'][:8]
+			data['password'] = data['username'] #[:8]
+			data['email_id'] = data['email']
 			if not 'in_laws_name' in data.keys():
 				data['in_laws_name'] = 'NA'
 			serializer = self.serializer_class(data=data)
@@ -60,6 +61,7 @@ class RegisterAPI(GenericAPIView):
 				village = Village.objects.filter(name__icontains = data['village'])
 				if village.exists():
 					village = village.first()
+				print("here")
 				family = Family.objects.create(head = user, village = village)
 				occupation = OccupationAddress.objects.create(family=family)
 				user.related_family = family
@@ -74,17 +76,17 @@ class LoginAPI(GenericAPIView):
 	serializer_class = LoginSerializer
 	
 	def post(self,request,*args,**kwargs ):
-		email = request.data.get('email',None)
+		username = request.data.get('username',None)
 		password = request.data.get('password',None)
 
-		print(email,password)
-		user = authenticate(email = email, password = password)
+		print(username,password)
+		user = authenticate(username = username, password = password)
 		print(user)
 		if user :
 			login(request,user)
 			serializer = self.serializer_class(user)
 			token,k = Token.objects.get_or_create(user=user)
-			return Response({"status" : True ,"data" : {'token' : token.key,'email' : user.email, 'family':user.related_family.id}, "message" : 'Login Success'},status = status.HTTP_200_OK)
+			return Response({"status" : True ,"data" : {'token' : token.key,'username' : user.username, 'family':user.related_family.id}, "message" : 'Login Success'},status = status.HTTP_200_OK)
 		return Response({"status" : False ,"data" : {}, "message" : 'Invalid Credentials'},status = status.HTTP_401_UNAUTHORIZED)
 	
 class UserRequest(GenericAPIView):
@@ -300,6 +302,7 @@ class MemberAPI(GenericAPIView):
 				return Response({"status" : False ,"data" : {}, "message" : "Only head of family can add member"}, status=status.HTTP_400_BAD_REQUEST)
 			data['password'] = data['email'][:4]+str(random.randint(1000,9999))
 			data['village'] = family.village.name
+			data['email_id'] = data['email']
 			data['related_family'] = family.id
 			serializer = MemberSerializer(data=data)
 			if serializer.is_valid(raise_exception=True):
@@ -533,8 +536,11 @@ class ForgotPasswordAPI(GenericAPIView):
 		try:
 			email = request.data['email']
 			user = User.objects.get(email = email)
+			if not user.email_id:
+				user.email_id = user.email
+				user.save()
 			password = email[:4]+str(random.randint(1000,9999))
-			data ={'email_body': f"Your password has been reset.\nUsername: {user.email}\nPassword: {password}", 'email_subject': "Password Reset",'to_email':user.email}
+			data ={'email_body': f"Your password has been reset.\nUsername: {user.username}\nPassword: {password}", 'email_subject': "Password Reset",'to_email':user.email_id}
 			util.send_email(data)
 			user.set_password(password)
 			user.save()
@@ -562,3 +568,14 @@ class UpdateEmailAPI(GenericAPIView):
 		except Exception as e:
 			print(e)
 			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class DataAPI(GenericAPIView):
+
+	def get(self,request):
+		users = User.objects.all()
+		for user in users:
+			user.email_id = user.email
+			user.username = user.email
+			user.save()
+		return Response({"status" : True, "message" : 'Success'},status=status.HTTP_200_OK)
