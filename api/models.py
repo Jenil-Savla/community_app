@@ -157,6 +157,7 @@ class CommitteeMember(models.Model):
         return self.name
     
 class Blog(models.Model):
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="admin@gmail.com")
     title = models.CharField(max_length=255)
     details = models.TextField(default="NA")
     picture = models.ImageField(upload_to = 'blogs/',blank = True, null=True)

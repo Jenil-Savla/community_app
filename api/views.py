@@ -125,12 +125,12 @@ class MemberListAPI(GenericAPIView):
 	permission_classes = [permissions.IsAuthenticated,]
 
 	def get(self,request):
-		try:
-			users = self.get_queryset()
+		if 1: #try:
+			users = self.get_queryset()[:50]
 			serializer = self.serializer_class(users, many=True)
 			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
-		except:
-			return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		# except:
+		# 	return Response({"status" : False ,"data" : {}, "message" : "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
 	def post(self,request):
 		try:
@@ -501,6 +501,7 @@ class CommitteeMemberListAPI(GenericAPIView):
 class BlogListAPI(GenericAPIView):
 	serializer_class = BlogSerializer
 	queryset = Blog.objects.filter(is_active = True)
+	permission_classes = [permissions.IsAuthenticated,]
 	
 	def get(self,request):
 		try:
@@ -513,14 +514,25 @@ class BlogListAPI(GenericAPIView):
 		
 	def post(self,request):
 		try:
-			ad = request.data.get('is_advertisement',None)
+			data = request.data.dict()
+			ad = request.data.get('is_advertisement', None)
 			if ad:
 				if type(ad) == str:
 					if ad == "true":
-						request.data['is_advertisement'] = True
+						data['is_advertisement'] = True
 					else:
-						request.data['is_advertisement'] = False
-			serializer = BlogSerializer(data = request.data)
+						data['is_advertisement'] = False
+
+			job = request.data.get('is_job', None)
+			if job:
+				if type(job) == str:
+					if job == "true":
+						data['is_job'] = True
+					else:
+						data['is_job'] = False
+			user = request.user
+			data['created_by'] = user
+			serializer = BlogSerializer(data = data)
 			if serializer.is_valid(raise_exception=True):
 				serializer.save()
 				data = serializer.data
@@ -528,6 +540,43 @@ class BlogListAPI(GenericAPIView):
 			return Response({"status" : False ,"data" : serializer.errors, "message" : "Failure"}, status=status.HTTP_400_BAD_REQUEST)
 		except Exception as e:
 			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+
+class BlogAPI(GenericAPIView):
+	serializer_class = BlogSerializer
+	queryset = Blog.objects.all()
+	permission_classes = [permissions.IsAuthenticated,]
+
+	def get(self,request,pk):
+		try:
+			blog = Blog.objects.get(id = pk)
+			serializer = self.serializer_class(blog)
+			data = serializer.data
+			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	def put(self,request,pk):
+		try:
+			blog = Blog.objects.get(id = pk)
+			if request.user != blog.created_by:
+				return Response({"status" : False ,"data" : {}, "message" : "Only creator can edit this blog"}, status=status.HTTP_400_BAD_REQUEST)
+			serializer = self.serializer_class(instance = blog, data = request.data, partial = True)
+			if serializer.is_valid(raise_exception=True):
+				serializer.save()
+			return Response({"status" : True ,"data" : serializer.data, "message" : "Success"}, status=status.HTTP_200_OK)
+		except Exception as e:
+			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
+	# def delete(self,request,pk):
+	# 	try:
+	# 		blog = Blog.objects.get(id = pk)
+	# 		if request.user != blog.created_by:
+	# 			return Response({"status" : False ,"data" : {}, "message" : "Only creator can delete this blog"}, status=status.HTTP_400_BAD_REQUEST)
+	# 		blog.delete()
+	# 		return Response({"status" : True ,"data" : {}, "message" : "Success"}, status=status.HTTP_200_OK)
+	# 	except Exception as e:
+	# 		return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
 class ForgotPasswordAPI(GenericAPIView):
 	serializer_class = ForgotPasswordSerializer

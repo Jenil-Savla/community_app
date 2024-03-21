@@ -18,6 +18,7 @@ urlpatterns = [
     path('content/', views.ContentListAPI.as_view(), name="Content"),
     path('committee-members/', views.CommitteeMemberListAPI.as_view(), name="Committee-Members"),
     path('blogs/', views.BlogListAPI.as_view(), name="Blogs"),
+    path('blog/<str:pk>', views.BlogAPI.as_view(), name="Blog"),
     
     path('homepage', views.homepage, name="Homepage"),
 
