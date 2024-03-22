@@ -507,7 +507,12 @@ class BlogListAPI(GenericAPIView):
 		try:
 			blog = self.get_queryset().order_by('-updated_at')
 			serializer = self.serializer_class(blog,many = True)
-			data = serializer.data
+			data = list(serializer.data)
+			for item in data:
+				if request.user.email == item['created_by']:
+					item['can_edit'] = True
+				else:
+					item['can_edit'] = False
 			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
 		except Exception as e:
 			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -551,7 +556,11 @@ class BlogAPI(GenericAPIView):
 		try:
 			blog = Blog.objects.get(id = pk)
 			serializer = self.serializer_class(blog)
-			data = serializer.data
+			data = dict(serializer.data)
+			if request.user.email == data['created_by']:
+				data['can_edit'] = True
+			else:
+				data['can_edit'] = False
 			return Response({"status" : True ,"data" : data, "message" : "Success"}, status=status.HTTP_200_OK)
 		except Exception as e:
 			return Response({"status" : False ,"data" : {}, "message" : f"{e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
